@@ -1,0 +1,17 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./warehouse.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id       Int    @id @default(autoincrement())
+  code     String @unique
+  vendor   String
+  name     String
+  tie      Int
+  height   Int
+}

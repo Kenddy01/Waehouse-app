@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  allowedDevOrigins: ['affront-modular-qualm.ngrok-free.dev'], // reemplaza con tu URL ngrok activa
-  reactStrictMode: true,
-  turbopack: {}, // configuración vacía para habilitar Turbopack sin errores
-}
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+});
 
-module.exports = nextConfig
+const nextConfig = {
+  reactStrictMode: true,
+  turbopack: {},
+};
+
+module.exports = withPWA(nextConfig);

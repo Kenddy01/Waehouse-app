@@ -1,6 +1,7 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:./warehouse.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -8,10 +9,13 @@ generator client {
 }
 
 model Product {
-  id       Int    @id @default(autoincrement())
-  code     String @unique
-  vendor   String
-  name     String
-  tie      Int
-  height   Int
+  id      Int     @id @default(autoincrement())
+  code    String  @unique
+  product String
+  ti      Int
+  hi      Int
+  truck   String?
+  tie     Int?
+  height  Int?
+  vendor  String
 }
